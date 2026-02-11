@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: #211d39;
+    --color-bg-surface: #312c4d;
+    --color-text: #fffccc;
+    --accent-color: #42f575;
+    --primary-color: #4278f5;
+    --primary-color-hover: #2e5ecc;
+    --warning-color: #ebc107;
+    --danger-color: #eb1a2f;
+    --success-color: #1aeb44;
+    --shadow-light: 4px 4px 4px rgba(0, 0, 0, 0.3);
+    --shadow-hard: 12px 12px 12px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    transition: 0.3s ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input {
+    margin: 0;
+    padding: 0;
+}
+
+button,
+input {
+    padding: 12px 12px;
+}
+
+header {
+    background: var(--color-bg-surface);
+    padding: 20px;
+    border-radius: 0 0 16px 16px;
+}
+
+.overview .day-caroussel {
+    display: flex;
+    gap: 12px;
+    padding: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.overview .day-caroussel::-webkit-scrollbar {
+    display: none;
+}
+
+.overview .day-caroussel .day {
+    min-width: 50px;
+    height: 50px;
+    background: var(--color-bg-surface);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.overview .day-caroussel .day.selected {
+    background: var(--accent-color);
+    color: #222;
+    transform: scale(1.025);
+}
+
+.activity-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.activity-list .activity {
+    padding: 20px;
+    background: var(--color-bg-surface);
+    border-radius: 20px;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.activity-list .activity button {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    padding: 4px;
+    background: var(--warning-color);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+.bottom #addExerciseBtn {
+    border: none;
+    outline: none;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.bottom #addExerciseBtn:hover {
+    background: var(--primary-color-hover);
+}
+
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    scale: .5;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+    border-radius: 100px;
+    padding: 40px;
+}
+
+.popup-container.visible {
+    opacity: 1;
+    scale: 1;
+    pointer-events: auto;
+    border-radius: 0;
+}
+
+.popup {
+    background: var(--color-bg-surface);
+    padding: 40px;
+    border-radius: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.popup .closeBtn {
+    padding: 2px;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    transition: 0.3s ease-in;
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+}
+
+.popup .closeBtn:hover {
+    background: var(--danger-color);
+}
+
+.popup input,
+.popup button {
+    background: rgba(60, 60, 60, 0.3);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-text);
+}
+
+.popup button {
+    cursor: pointer;
+}

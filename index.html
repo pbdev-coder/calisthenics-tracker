@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#211d39">
+</head>
+
+<body>
+    <header>
+        <h1>Willkommen, Patrick!</h1>
+    </header>
+
+    <div class="overview">
+        <div class="day-caroussel"></div>
+
+        <div class="activity-list">
+            <div class="activity">
+                <h2>Liegestütz</h2>
+                <button>0</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <button id="addExerciseBtn">
+            Übung hinzufügen
+        </button>
+    </div>
+
+    <div class="popup-container">
+        <div class="popup">
+            <button class="closeBtn">
+                ×
+            </button>
+
+            <h2>Übung hinzufügen</h2>
+
+            <input type="text" id="exercise-name" placeholder="Name der Übung">
+            <input type="number" id="exercise-count" placeholder="Wiederholungen">
+            <button class="add">Hinzufügen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
