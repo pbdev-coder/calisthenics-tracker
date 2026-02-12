@@ -206,9 +206,34 @@ generateDays(120);
 // Service Worker
 // =======================
 if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js")
-            .then(() => console.log("Service Worker registriert"))
-            .catch(err => console.log("SW Fehler:", err));
+    window.addEventListener("load", async () => {
+
+        const registration = await navigator.serviceWorker.register("./sw.js");
+
+        const banner = document.getElementById("update-banner");
+        const updateBtn = document.getElementById("update-btn");
+
+        registration.addEventListener("updatefound", () => {
+
+            const newWorker = registration.installing;
+
+            newWorker.addEventListener("statechange", () => {
+
+                if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                    banner.classList.remove("hidden");
+                }
+            });
+        });
+
+        updateBtn.addEventListener("click", () => {
+            if (registration.waiting) {
+                registration.waiting.postMessage({ type: "SKIP_WAITING" });
+            }
+        });
+
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+            window.location.reload();
+        });
+
     });
 }
